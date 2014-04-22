@@ -2,10 +2,12 @@ require 'pry'
 class Array
 	def partial_inject(initial_value,&block)
 					binding.pry
-		self.inject([initial_value,[initial_value]]) do |(accumulated, output),element|
+		arr=self.inject([initial_value]) do |output,element|
 			new_value = yield(element)
-			[new_value,output << new_value]
-		end[1]
+			output << new_value
+		end
+			#end[1]
+		p arr
 	end
 end
 
